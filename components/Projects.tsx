@@ -43,6 +43,23 @@ const projectsData = [
       "Generative AI",
     ],
   },
+  {
+  title: "CourseTube",
+  description:
+    "CourseTube is a Next.js application that transforms YouTube videos into structured, professional educational courses. It extracts video transcripts, organizes the content into chapters, generates summaries, and presents everything in a clean, user-friendly interface.",
+  link: "https://mycoursetube.vercel.app/",
+  code: "https://github.com/chinmaye5/CourseTube",
+  previewImage: "/Screenshot 2025-11-28 151156.png",
+  technologies: [
+    "Next.js",
+    "MongoDB",
+    "Node.js",
+    "TailwindCSS",
+    "Clerk Auth",
+    "Lucide-react",
+  ],
+},
+
 ];
 
 
