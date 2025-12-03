@@ -20,12 +20,11 @@ export default function Intro() {
                 </h1>
 
                 <p className="text-base text-gray-800 dark:text-gray-300 leading-relaxed">
-                    Fullstack developer skilled in building scalable, AI-powered web applications
-                    using technologies like Next.js, Node.js, and MongoDB. Proficient in writing
-                    clean, modular code and integrating LLMs such as Gemini, LLaMA, and DeepSeek.
-                    Experienced in deploying production-grade applications using Vercel, Render,
-                    and AWS with CI/CD, Docker, and DevOps workflows. Strong foundation in DSA,
-                    OOP, and agile methodologies.
+                   Full-stack developer skilled in building scalable, AI-powered web applications using technologies 
+                    like Next.js, Node.js, and MongoDB. Proficient in writing clean, modular code and integrating LLMs 
+                    into real world products. Experienced in deploying production-grade applications using CI/CD pipelines
+                    with GitHub, Vercel, and Render. Product-focused engineer who builds solutions that solve real user 
+                    problems and deliver meaningful impact.
                 </p>
             </div>
 
