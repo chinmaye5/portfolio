@@ -13,16 +13,12 @@ interface EducationItem {
 
 const EducationData: EducationItem[] = [
   {
-    startDate: "August 2022",
-    endDate: "May 2026",
     collegeName: "Lovely Professional University",
     courseName: "Bachelor of Technology (B.Tech), Computer Science and Engineering",
     address: "Punjab, India",
     score: "CGPA: 8.20 / 10",
   },
   {
-    startDate: "June 2018",
-    endDate: "March 2020",
     collegeName: "Mahesh PU College",
     courseName: "Pre-University College (PUC) PCMB",
     address: "Mangaluru Karnataka, India",
@@ -47,10 +43,6 @@ const Education: React.FC = () => {
             <span className="absolute flex items-center justify-center w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 text-white">
               {index === 0 ? <GraduationCap size={16} /> : <School size={16} />}
             </span>
-
-            <time className="block mb-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-              {item.startDate} – {item.endDate || "Present"}
-            </time>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               {item.courseName}
             </h3>
