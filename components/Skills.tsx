@@ -23,10 +23,10 @@ function Skills() {
         {Object.entries(skillsData).map(([category, skills], index) => (
           <div
             key={index}
-            className="p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 shadow-sm hover:shadow-lg transition-all duration-300"
+            className="p-6 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm shadow-sm hover:shadow-md hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300"
           >
-            <h2 className="text-lg font-semibold capitalize mb-3 flex items-center gap-2 text-gray-800 dark:text-gray-200">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"></span>
+            <h2 className="text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2 text-gray-500 dark:text-gray-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
               {category}
             </h2>
 
@@ -34,7 +34,7 @@ function Skills() {
               {skills.map((skill, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 text-sm font-medium rounded-lg bg-gradient-to-r from-indigo-500/90 to-purple-500/90 text-white shadow-sm hover:scale-105 hover:shadow-md transition-transform duration-200"
+                  className="px-3 py-1.5 text-xs font-semibold rounded-full border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all duration-200 cursor-default"
                 >
                   {skill}
                 </span>
@@ -43,6 +43,7 @@ function Skills() {
           </div>
         ))}
       </div>
+
     </section>
   );
 }
