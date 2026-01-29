@@ -72,6 +72,16 @@ const projectsData = [
       "Vercel",
       "Clerk Auth",
     ],
+  },{
+    title: "Postore",
+    description:
+      "A fully functional frontend react spa for a poster ecommerce",
+    link: "https://postore.vercel.app/",
+    code: "https://github.com/chinmaye5/PoStore",
+    previewImage: "/CourseTube.png",
+    technologies: [
+      "React js",
+    ],
   },
 ];
 
