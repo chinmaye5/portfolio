@@ -51,6 +51,20 @@ const projectsData = [
     ],
   },
   {
+    title: "Ecommerce",
+    description:
+      "A professional full-stack e-commerce platform developed for a client as a freelance project. Built using Next.js, TypeScript, Tailwind CSS, MongoDB, and Clerk authentication.",
+    link: "https://keshavakiranam.in/",
+    code: "https://github.com/chinmaye5/ecommerce_freelance",
+    previewImage: "/CourseTube.png",
+    technologies: [
+      "Next.js",
+      "MongoDB",
+      "TailwindCSS",
+      "Clerk Auth",
+    ],
+  },
+  {
     title: "YT-GPT",
     description:
       "Paste any YouTube link and chat instantly about the video's content. Powered by Groq API with Node.js, MongoDB, and Next.js. (Currently Google has blocked transcript generation on hosted servers).",
@@ -72,7 +86,7 @@ const projectsData = [
       "Vercel",
       "Clerk Auth",
     ],
-  },{
+  }, {
     title: "Postore",
     description:
       "A fully functional frontend react spa for a poster ecommerce",
