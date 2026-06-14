@@ -51,6 +51,41 @@ const projectsData = [
     ],
   },
   {
+    title: "Clippi",
+    description:
+      "Clippi is a full-stack image processing web application that gives authenticated users access to a suite of AI tools — text-to-image generation, background removal, background replacement, text removal, upscaling,",
+    link: "https://clippitools.vercel.app/",
+    code: "https://github.com/chinmaye5/Clippi",
+    previewImage: "/CourseTube.png",
+    technologies: [
+      "React js",
+      "MongoDB",
+      "TailwindCSS",
+      "NodeJS",
+      "ExpressJS",
+      "CLIPDROP API",
+    ],
+  },
+
+  {
+    title: "Agrisense AI",
+    description:
+      "Crop recommendation system chatbot and deep graphical analysis using LLM and RAG",
+    link: "https://theagrisenseai.vercel.app/",
+    code: "https://github.com/chinmaye5/AgriSense",
+    previewImage: "/CourseTube.png",
+    technologies: [
+      "Next.js",
+      "Qdrant Vector db",
+      "OpenAI API",
+      "Gemini API",
+      "MongoDB",
+      "TailwindCSS",
+      "Clerk Auth",
+    ],
+  },
+
+  {
     title: "Ecommerce",
     description:
       "A professional full-stack e-commerce platform developed for a client as a freelance project. Built using Next.js, TypeScript, Tailwind CSS, MongoDB, and Clerk authentication.",
