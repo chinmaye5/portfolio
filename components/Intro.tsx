@@ -1,64 +1,71 @@
 "use client";
 import Image from "next/image";
 import ProfilePic from "@/app/images/pfp.jpg";
-import { Typewriter } from "react-simple-typewriter";
 
 export default function Intro() {
     return (
-        <div className="w-full flex flex-col-reverse lg:flex-row gap-10 items-center py-4">
-            <div className="flex flex-col gap-6 w-full lg:w-3/4">
+        <section className="w-full flex flex-col-reverse sm:flex-row gap-6 sm:gap-8 items-start justify-between pt-2 sm:pt-6 pb-2">
+            <div className="flex flex-col gap-4 sm:gap-5 max-w-xl">
 
                 {/* Available Badge */}
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold w-fit animate-in fade-in slide-in-from-left-4 duration-1000">
+                <div className="flex items-center gap-2.5 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-border text-[11px] sm:text-xs font-mono text-foreground/80 w-fit">
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8FF3C] opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C8FF3C]"></span>
                     </span>
                     Available for new opportunities
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                        <span className="bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
-                            <Typewriter
-                                words={["Hi! I'm Chinmaye H.G."]}
-                                typeSpeed={70}
-                                deleteSpeed={50}
-                                cursor
-                                cursorStyle="|"
-                            />
-                        </span>
+                <div className="flex flex-col gap-1.5 sm:gap-2">
+                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground font-heading">
+                        Chinmaye H.G.
                     </h1>
-                    <h2 className="text-xl md:text-2xl font-semibold text-indigo-600 dark:text-indigo-400">
-                        Fullstack Developer & AI Enthusiast
-                    </h2>
+                    <p className="text-base sm:text-xl font-medium text-foreground/90 font-heading leading-snug">
+                        Backend Engineer building & shipping AI-integrated systems.
+                    </p>
                 </div>
 
-                <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
-                    I build scalable, AI-powered web applications using
-                    <span className="text-gray-900 dark:text-gray-100 font-medium ml-1">Next.js, Node.js, and MongoDB</span>.
-                    I'm focused on writing clean code and integrating LLMs
-                    into products that solve real problems.
+                <p className="text-xs sm:text-base text-muted-foreground leading-relaxed">
+                    Focused on multi-LLM orchestration (Gemini, LLaMA, DeepSeek, Qwen), RAG pipelines with vector databases (Qdrant), 
+                    LangChain, and scalable web backend architectures using Node.js, Next.js & MongoDB.
                 </p>
-            </div>
 
-            {/* Profile Picture with Double Ring */}
-            <div className="w-full lg:w-1/4 flex justify-center relative">
-                <div className="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full scale-150 animate-pulse pointer-events-none" />
-                <div className="relative p-1 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 group">
-                    <div className="p-1 rounded-full bg-white dark:bg-gray-950">
-                        <Image
-                            src={ProfilePic}
-                            alt="Chinmaye"
-                            width={180}
-                            height={180}
-                            className="rounded-full object-cover aspect-square grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-[1.02]"
-                            priority
-                        />
-                    </div>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[11px] sm:text-xs font-mono text-muted-foreground pt-1">
+                    <span>Bengaluru, India</span>
+                    <span>·</span>
+                    <a 
+                        href="mailto:chinmaye115@gmail.com" 
+                        className="hover:text-foreground transition-colors underline decoration-border underline-offset-4 break-all"
+                    >
+                        chinmaye115@gmail.com
+                    </a>
+                    <span>·</span>
+                    <a 
+                        href="https://x.com/Chinmayehg" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-foreground transition-colors underline decoration-border underline-offset-4"
+                    >
+                        @Chinmayehg
+                    </a>
                 </div>
             </div>
-        </div>
-    );
 
+            {/* Profile Picture with Minimal Clean Border */}
+            <div className="shrink-0 relative">
+                <div className="p-1 rounded-full border border-border bg-card shadow-sm">
+                    <Image
+                        src={ProfilePic}
+                        alt="Chinmaye H.G."
+                        width={128}
+                        height={128}
+                        className="rounded-full object-cover aspect-square grayscale-[15%] w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32"
+                        priority
+                    />
+                </div>
+            </div>
+        </section>
+    );
 }
+
+

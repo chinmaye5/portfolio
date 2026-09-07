@@ -1,70 +1,113 @@
-import React from "react";
-import { GraduationCap, School } from "lucide-react";
+"use client";
 
-interface EducationItem {
-  startDate?: string;
-  endDate?: string;
-  collegeName?: string;
-  schoolName?: string;
-  address?: string;
-  courseName: string;
-  score?: string;
+import React from "react";
+import { ExternalLink } from "lucide-react";
+
+interface BackgroundItem {
+  type: "Experience" | "Education";
+  title: string;
+  institution: string;
+  location: string;
+  period?: string;
+  scoreOrDetail?: string;
+  description?: string[];
+  link?: string;
 }
 
-const EducationData: EducationItem[] = [
+const backgroundData: BackgroundItem[] = [
   {
-    collegeName: "Lovely Professional University",
-    courseName: "Bachelor of Technology (B.Tech), Computer Science and Engineering",
-    address: "Punjab, India",
-    score: "CGPA: 8.20 / 10",
+    type: "Experience",
+    title: "Complete Interview Prep Bootcamp",
+    institution: "GeeksforGeeks",
+    location: "Online",
+    period: "June 2024 – July 2024",
+    description: [
+      "Intensive training in Data Structures & Algorithms (DSA), Operating Systems, Computer Networks, and web application architecture.",
+    ],
+    link: "https://www.geeksforgeeks.org/",
   },
   {
-    collegeName: "Mahesh PU College",
-    courseName: "Pre-University College (PUC) PCMB",
-    address: "Mangaluru Karnataka, India",
-    score: "91%",
-  }
+    type: "Education",
+    title: "Bachelor of Technology (B.Tech), Computer Science & Engineering",
+    institution: "Lovely Professional University",
+    location: "Punjab, India",
+    scoreOrDetail: "CGPA: 8.47 / 10",
+  },
+  {
+    type: "Education",
+    title: "Pre-University College (PUC) PCMB",
+    institution: "Mahesh PU College",
+    location: "Mangaluru, Karnataka, India",
+    scoreOrDetail: "Percentage: 91%",
+  },
 ];
 
-const Education: React.FC = () => {
+export default function Background() {
   return (
-    <section className="flex flex-col gap-6 w-full">
-      <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
-        🎓 Education
-      </h1>
+    <section className="flex flex-col gap-6 w-full pt-4">
+      <div className="flex items-center justify-between border-b border-border pb-3">
+        <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground font-semibold">
+          Background & Education
+        </h2>
+        <span className="text-[11px] font-mono text-muted-foreground">Credentials & Training</span>
+      </div>
 
-      <ol className="relative border-s border-gray-200 dark:border-gray-700">
-        {EducationData.map((item, index) => (
-          <li
+      <div className="flex flex-col gap-4">
+        {backgroundData.map((item, index) => (
+          <div
             key={index}
-            className={`ms-6 mb-10 ${index === EducationData.length - 1 ? "mb-0" : ""}`}
+            className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 p-4 rounded-lg border border-border bg-card/60"
           >
-            {/* Icon */}
-            <span className="absolute flex items-center justify-center w-10 h-10 bg-white dark:bg-gray-950 border-2 border-indigo-500 rounded-full -start-5 z-10">
-              <span className="flex items-center justify-center w-7 h-7 bg-indigo-500 rounded-full text-white shadow-lg shadow-indigo-500/20">
-                {index === 0 ? <GraduationCap size={14} /> : <School size={14} />}
-              </span>
-            </span>
+            <div className="flex flex-col gap-1 max-w-xl">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-border text-muted-foreground font-semibold">
+                  {item.type}
+                </span>
+                <h3 className="text-sm sm:text-base font-bold text-foreground font-heading">
+                  {item.title}
+                </h3>
+              </div>
 
-            <div className="p-5 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-sm hover:border-indigo-500/30 transition-colors duration-300">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                {item.courseName}
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mt-1 uppercase tracking-wider">
-                {item.collegeName || item.schoolName} • {item.address}
+              <p className="text-xs text-muted-foreground mt-0.5">
+                <span className="text-foreground/90 font-medium">{item.institution}</span> · {item.location}
               </p>
-              {item.score && (
-                <p className="mt-3 inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                  {item.score}
-                </p>
+
+              {item.description && (
+                <ul className="mt-2 text-xs text-muted-foreground space-y-1">
+                  {item.description.map((desc, i) => (
+                    <li key={i} className="leading-relaxed">
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
 
-          </li>
+            <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
+              {item.period && (
+                <span className="text-xs font-mono text-muted-foreground">
+                  {item.period}
+                </span>
+              )}
+              {item.scoreOrDetail && (
+                <span className="text-xs font-mono font-semibold text-foreground bg-black/5 dark:bg-white/5 border border-border px-2.5 py-1 rounded">
+                  {item.scoreOrDetail}
+                </span>
+              )}
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground hover:text-foreground hover:underline underline-offset-4 mt-1"
+                >
+                  Organization <ExternalLink size={12} />
+                </a>
+              )}
+            </div>
+          </div>
         ))}
-      </ol>
+      </div>
     </section>
   );
-};
-
-export default Education;
+}

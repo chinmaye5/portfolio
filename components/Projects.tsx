@@ -1,264 +1,323 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
-import { ExternalLink, Github, Monitor } from "lucide-react";
+import React from "react";
+import { ExternalLink, Github } from "lucide-react";
 
-const projectsData = [
-  {
-    title: "Ship now",
-    description:
-      "Ship Now is a MERN stack application that helps users quickly build static websites for personal or business use using AI. It allows users to easily customize, edit, and iterate on their sites, and deploy them with a custom link in just a few clicks.",
-    link: "https://theshipnow.vercel.app/",
-    code: "https://github.com/chinmaye5/ship-now",
-    previewImage: "/CourseTube.png",
-    technologies: [
-      "React js",
-      "MongoDB",
-      "TailwindCSS",
-      "NodeJS",
-      "ExpressJS",
-      "Gemini API",
-    ],
-  },
+interface FlagshipProject {
+  title: string;
+  tagline: string;
+  architecture: string;
+  decision: string;
+  link: string;
+  code: string;
+  tech: string[];
+}
+
+interface SecondaryProject {
+  title: string;
+  description: string;
+  link: string;
+  code: string;
+  tech: string;
+}
+
+const flagshipProjects: FlagshipProject[] = [
   {
     title: "ParallelAI",
-    description:
-      "ParallelAI is a multimodel Q&A platform that queries several LLMs in parallel, including Gemini, LLaMA, DeepSeek, Qwen, and Gemma. It helps reduce hallucination by enabling side‑by‑side comparison and validation.",
+    tagline: "Multi-LLM parallel querying platform for response cross-validation.",
+    architecture:
+      "Executes parallel requests across Gemini, LLaMA, DeepSeek, Qwen, and Gemma model providers. Aggregates stream responses into a unified side-by-side verification interface.",
+    decision:
+      "Single-model LLM workflows suffer from silent hallucinations. Querying models in parallel lets users compare consensus and confidence across distinct architectures before acting on generated output.",
     link: "https://theparallelai.vercel.app/",
     code: "https://github.com/chinmaye5/parallel-ai",
-    previewImage: "/ParallAi.png",
-    technologies: [
-      "Next.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Multiple LLM APIs",
-    ],
-  },
-  {
-    title: "CourseTube",
-    description:
-      "CourseTube is a Next.js application that transforms YouTube videos into structured, professional educational courses. It organizes the content into chapters, and presents everything in a clean, user-friendly interface.",
-    link: "https://mycoursetube.vercel.app/",
-    code: "https://github.com/chinmaye5/CourseTube",
-    previewImage: "/CourseTube.png",
-    technologies: [
-      "Next.js",
-      "MongoDB",
-      "TailwindCSS",
-      "Clerk Auth",
-    ],
+    tech: ["Next.js", "Node.js", "Express.js", "MongoDB", "Multi-LLM APIs"],
   },
   {
     title: "Clippi",
-    description:
-      "Clippi is a full-stack image processing web application that gives authenticated users access to a suite of AI tools — text-to-image generation, background removal, background replacement, text removal, upscaling,",
+    tagline: "Full-stack AI image processing suite (background removal, replacement, text removal, upscaling).",
+    architecture:
+      "Integrates Clipdrop AI API endpoints into an authenticated user workflow with persistent transformation history and asset management.",
+    decision:
+      "Offloading complex computer vision model execution to specialized serverless AI endpoints ensures ultra-low latency client interactions and scalable image transformation pipelines.",
     link: "https://clippitools.vercel.app/",
     code: "https://github.com/chinmaye5/Clippi",
-    previewImage: "/CourseTube.png",
-    technologies: [
-      "React js",
-      "MongoDB",
-      "TailwindCSS",
-      "NodeJS",
-      "ExpressJS",
-      "CLIPDROP API",
-    ],
-  },
-
-  {
-    title: "Agrisense AI",
-    description:
-      "Crop recommendation system chatbot and deep graphical analysis using LLM and RAG",
-    link: "https://theagrisenseai.vercel.app/",
-    code: "https://github.com/chinmaye5/AgriSense",
-    previewImage: "/CourseTube.png",
-    technologies: [
-      "Next.js",
-      "Qdrant Vector db",
-      "OpenAI API",
-      "Gemini API",
-      "MongoDB",
-      "TailwindCSS",
-      "Clerk Auth",
-    ],
-  },
-
-  {
-    title: "Ecommerce",
-    description:
-      "A professional full-stack e-commerce platform developed for a client as a freelance project. Built using Next.js, TypeScript, Tailwind CSS, MongoDB, and Clerk authentication.",
-    link: "https://keshavakiranam.in/",
-    code: "https://github.com/chinmaye5/ecommerce_freelance",
-    previewImage: "/CourseTube.png",
-    technologies: [
-      "Next.js",
-      "MongoDB",
-      "TailwindCSS",
-      "Clerk Auth",
-    ],
+    tech: ["React.js", "Express.js", "MongoDB", "Node.js", "Clipdrop API"],
   },
   {
-    title: "YT-GPT",
-    description:
-      "Paste any YouTube link and chat instantly about the video's content. Powered by Groq API with Node.js, MongoDB, and Next.js. (Currently Google has blocked transcript generation on hosted servers).",
-    link: "https://theytgpt.vercel.app/",
-    code: "https://github.com/chinmaye5/YTgpt",
-    previewImage: "/ytgpt.png",
-    technologies: ["Node.js", "MongoDB", "Next.js", "Express.js", "Groq API"],
-  },
-  {
-    title: "AIStudio",
-    description:
-      "AIStudio is a content generation platform built with Next.js and the Gemini API. Users can generate high‑quality blogs, scripts, and more with industry‑specific prompts.",
-    link: "https://theaistudio.vercel.app/",
-    code: "https://github.com/chinmaye5/AiStudio",
-    previewImage: "/AiStudio.png",
-    technologies: [
-      "Next.js",
-      "Gemini API",
-      "Vercel",
-      "Clerk Auth",
-    ],
-  }, {
-    title: "Postore",
-    description:
-      "A fully functional frontend react spa for a poster ecommerce",
-    link: "https://postore.vercel.app/",
-    code: "https://github.com/chinmaye5/PoStore",
-    previewImage: "/CourseTube.png",
-    technologies: [
-      "React js",
-    ],
+    title: "CourseTube",
+    tagline: "Automated YouTube-to-course generator with structured chapters & progress metrics.",
+    architecture:
+      "Parses long-form technical video streams into modular chapters, syllabus hierarchies, and interactive study modules.",
+    decision:
+      "Raw video feeds lead to unstructured learning. Extracting structured metadata into defined learning paths drastically improves content retention and scannability.",
+    link: "https://mycoursetube.vercel.app/",
+    code: "https://github.com/chinmaye5/CourseTube",
+    tech: ["Next.js", "MongoDB", "TailwindCSS", "Clerk Auth"],
   },
 ];
 
-function ProjectPreview({ link, title, previewImage }: { link: string; title: string, previewImage: string }) {
-  const [isLoading, setIsLoading] = useState(true);
+const secondaryProjects: SecondaryProject[] = [
+  {
+    title: "Agrisense AI",
+    description: "Agronomic recommendation system & chatbot with Qdrant vector DB RAG & graphical analysis.",
+    link: "https://theagrisenseai.vercel.app/",
+    code: "https://github.com/chinmaye5/AgriSense",
+    tech: "Next.js, Qdrant DB, Gemini",
+  },
+  {
+    title: "Ship Now",
+    description: "MERN app allowing users to build, edit & deploy AI-generated static sites in minutes.",
+    link: "https://theshipnow.vercel.app/",
+    code: "https://github.com/chinmaye5/ship-now",
+    tech: "React, Node, Express, MongoDB",
+  },
+  {
+    title: "YT-GPT",
+    description: "Instant chat interface over YouTube video content powered by Groq API high-speed inference.",
+    link: "https://theytgpt.vercel.app/",
+    code: "https://github.com/chinmaye5/YTgpt",
+    tech: "Node.js, Express, Groq API",
+  },
+  {
+    title: "AIStudio",
+    description: "Structured prompt workstation for generating domain-specific blogs & technical copy.",
+    link: "https://theaistudio.vercel.app/",
+    code: "https://github.com/chinmaye5/AiStudio",
+    tech: "Next.js, Gemini API, Clerk",
+  },
+  {
+    title: "Client E-commerce",
+    description: "Production client e-commerce platform with product catalogs, MongoDB & Clerk auth.",
+    link: "https://keshavakiranam.in/",
+    code: "https://github.com/chinmaye5/ecommerce_freelance",
+    tech: "Next.js, MongoDB, Clerk",
+  },
+  {
+    title: "Postore",
+    description: "Poster e-commerce web interface SPA with catalog filtering & cart state.",
+    link: "https://postore.vercel.app/",
+    code: "https://github.com/chinmaye5/PoStore",
+    tech: "React.js, Tailwind CSS",
+  },
+];
 
+function LiveWebpageCard({ link, title }: { link: string; title: string }) {
   return (
-    <div className="relative w-full h-52 overflow-hidden bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+    <div className="relative w-full h-48 sm:h-72 md:h-80 rounded-lg overflow-hidden border border-border bg-card/40 flex flex-col group">
       {/* Browser Bar */}
-      <div className="absolute top-0 left-0 right-0 h-7 bg-gray-100 dark:bg-gray-900 flex items-center px-4 gap-1.5 z-20 border-b border-gray-200 dark:border-gray-800">
-        <div className="flex gap-1.5">
-          <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
-          <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
-          <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+      <div className="flex items-center justify-between px-2.5 py-1 sm:px-3 sm:py-1.5 border-b border-border bg-card text-[10px] sm:text-[11px] font-mono text-muted-foreground shrink-0 z-20">
+        <div className="flex items-center gap-1 sm:gap-1.5">
+          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-red-500/70 inline-block"></span>
+          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-yellow-500/70 inline-block"></span>
+          <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-green-500/70 inline-block"></span>
         </div>
-        <div className="ml-4 px-3 py-0.5 rounded-md bg-white dark:bg-gray-800 text-[10px] text-gray-500 dark:text-gray-400 font-mono flex-1 truncate max-w-[200px] border border-gray-200 dark:border-gray-700 shadow-sm">
+        <span className="truncate max-w-[160px] sm:max-w-[260px] opacity-75">
           {link.replace("https://", "").replace(/\/$/, "")}
-        </div>
-        <Monitor size={12} className="text-gray-400 dark:text-gray-600 ml-auto" />
+        </span>
+        <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider opacity-60">Live View</span>
       </div>
 
-      {/* Preview Content */}
-      <div className="w-full h-full pt-7 bg-white dark:bg-slate-950 overflow-hidden relative">
-        {isLoading && (
-          <div className="absolute inset-x-0 bottom-0 top-7 z-10 flex items-center justify-center bg-gray-50 dark:bg-gray-950">
-            <div
-              className="absolute inset-0 bg-cover bg-top blur-[4px] opacity-20 grayscale transition-opacity duration-500"
-              style={{ backgroundImage: `url(${previewImage})` }}
-            />
-            <div className="relative z-20 flex flex-col items-center gap-2">
-              <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-              <span className="text-[9px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Loading Live Preview</span>
-            </div>
-          </div>
-        )}
-
-        <div className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.05] relative">
-          <iframe
-            src={link}
-            title={title}
-            className={`border-none pointer-events-none select-none transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-            style={{
-              width: '1280px',
-              height: '900px',
-              transformOrigin: 'top center',
-              transform: 'scale(0.32)',
-              position: 'absolute',
-              left: '50%',
-              marginLeft: '-640px',
-              top: '0',
-            }}
-            onLoad={() => setIsLoading(false)}
-            loading="lazy"
-          />
-        </div>
+      {/* Live Webpage Iframe */}
+      <div className="relative w-full grow overflow-hidden bg-background">
+        <iframe
+          src={link}
+          title={title}
+          className="absolute top-0 left-0 w-[200%] h-[200%] origin-top-left scale-50 border-0 pointer-events-none select-none"
+          loading="lazy"
+        />
+        {/* Click Overlay */}
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10 cursor-pointer bg-transparent hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+          title={`Click to open ${title} live website in a new tab`}
+        />
       </div>
-
-      {/* Interaction blocker and subtle hover overlay */}
-      <div className="absolute inset-0 z-30 pointer-events-none group-hover:bg-indigo-500/[0.02] transition-colors duration-300" />
     </div>
   );
 }
 
-function Projects() {
+function SecondaryLiveCard({ link, title }: { link: string; title: string }) {
   return (
-    <section className="flex flex-col gap-8 w-full">
-      <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
-        🚀 Projects
-      </h1>
+    <div className="relative w-full h-36 sm:h-40 rounded-t-lg overflow-hidden border-b border-border bg-card/40 flex flex-col group">
+      {/* Mini Browser Bar */}
+      <div className="flex items-center justify-between px-2.5 py-1 border-b border-border bg-card text-[10px] font-mono text-muted-foreground shrink-0 z-20">
+        <div className="flex items-center gap-1">
+          <span className="w-2 h-2 rounded-full bg-red-500/70 inline-block"></span>
+          <span className="w-2 h-2 rounded-full bg-yellow-500/70 inline-block"></span>
+          <span className="w-2 h-2 rounded-full bg-green-500/70 inline-block"></span>
+        </div>
+        <span className="truncate max-w-[150px] sm:max-w-[180px] opacity-75">
+          {link.replace("https://", "").replace(/\/$/, "")}
+        </span>
+        <span className="text-[9px] uppercase font-mono tracking-wider opacity-60">Live</span>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projectsData.map((project, index) => (
-          <div
-            key={index}
-            className="group relative flex flex-col rounded-xl border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-          >
-            {/* Website Preview Instead of Static Image */}
-            <ProjectPreview
-              link={project.link}
-              title={project.title}
-              previewImage={project.previewImage}
-            />
+      {/* Live Webpage Iframe */}
+      <div className="relative w-full grow overflow-hidden bg-background">
+        <iframe
+          src={link}
+          title={title}
+          className="absolute top-0 left-0 w-[200%] h-[200%] origin-top-left scale-50 border-0 pointer-events-none select-none"
+          loading="lazy"
+        />
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10 cursor-pointer bg-transparent hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors"
+          title={`Click to open ${title} live website`}
+        />
+      </div>
+    </div>
+  );
+}
 
-            {/* Content */}
-            <div className="flex flex-col gap-3 p-5 grow">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                {project.title}
-              </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                {project.description}
-              </p>
+export default function Projects() {
+  return (
+    <section className="flex flex-col gap-10 sm:gap-12 w-full pt-2 sm:pt-4">
+      {/* Flagship Section */}
+      <div className="flex flex-col gap-6 sm:gap-8">
+        <div className="flex items-center justify-between border-b border-border pb-2.5 sm:pb-3">
+          <h2 className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-muted-foreground font-semibold">
+            Flagship Systems
+          </h2>
+          <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground">01 / Deep Case Studies</span>
+        </div>
 
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2 mt-2">
-                {project.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-sm"
+        <div className="flex flex-col gap-8 sm:gap-10">
+          {flagshipProjects.map((project, index) => (
+            <article
+              key={index}
+              className="flex flex-col gap-4 sm:gap-5 p-4 sm:p-6 rounded-xl border border-border bg-card shadow-xs transition-colors hover:border-foreground/20"
+            >
+              {/* Top Bar: Title & Links */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-foreground font-heading">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 leading-normal">
+                    {project.tagline}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-mono font-medium rounded-md border border-border bg-background hover:bg-foreground hover:text-background transition-colors"
                   >
-                    {tech}
+                    <ExternalLink size={12} /> Live System
+                  </Link>
+                  <Link
+                    href={project.code}
+                    target="_blank"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs font-mono font-medium rounded-md border border-border bg-background hover:bg-foreground hover:text-background transition-colors"
+                  >
+                    <Github size={12} /> Source
+                  </Link>
+                </div>
+              </div>
+
+              {/* Live Webpage Container inside card */}
+              <LiveWebpageCard link={project.link} title={project.title} />
+
+              {/* Technical Breakdown */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm pt-1">
+                <div className="flex flex-col gap-1.5 p-3 sm:p-3.5 rounded-lg bg-background/50 border border-border">
+                  <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Architecture & Flow
+                  </span>
+                  <p className="text-foreground/90 leading-relaxed text-xs sm:text-sm">
+                    {project.architecture}
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-1.5 p-3 sm:p-3.5 rounded-lg bg-background/50 border border-border">
+                  <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                    Engineering Decision
+                  </span>
+                  <p className="text-foreground/90 leading-relaxed text-xs sm:text-sm">
+                    {project.decision}
+                  </p>
+                </div>
+              </div>
+
+              {/* Stack */}
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] sm:text-xs font-mono text-muted-foreground pt-1">
+                <span className="text-foreground/70 font-semibold">Stack:</span>
+                {project.tech.map((t, i) => (
+                  <span key={i}>
+                    {t}{i < project.tech.length - 1 ? " · " : ""}
                   </span>
                 ))}
               </div>
+            </article>
+          ))}
+        </div>
+      </div>
 
-              {/* Buttons */}
-              <div className="flex gap-3 mt-auto pt-2">
-                <Link
-                  href={project.link}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md hover:shadow-indigo-500/20 hover:scale-105 transition-all duration-200"
-                >
-                  <ExternalLink size={16} /> View
-                </Link>
-                <Link
-                  href={project.code}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:scale-105 transition-all duration-200"
-                >
-                  <Github size={16} /> Code
-                </Link>
+      {/* Secondary Section */}
+      <div className="flex flex-col gap-5 sm:gap-6 pt-2 sm:pt-4">
+        <div className="flex items-center justify-between border-b border-border pb-2.5 sm:pb-3">
+          <h2 className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-muted-foreground font-semibold">
+            Secondary Work & Systems
+          </h2>
+          <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground">02 / Additional Live Deployments</span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+          {secondaryProjects.map((project, index) => (
+            <div
+              key={index}
+              className="flex flex-col rounded-xl border border-border bg-card shadow-xs overflow-hidden hover:border-foreground/20 transition-colors"
+            >
+              <SecondaryLiveCard link={project.link} title={project.title} />
+
+              <div className="flex flex-col justify-between p-3.5 sm:p-4 grow gap-3">
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-sm sm:text-base font-bold text-foreground font-heading">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-2 pt-2 border-t border-border/50">
+                  <div className="text-[10px] sm:text-[11px] font-mono text-muted-foreground truncate">
+                    {project.tech}
+                  </div>
+                  <div className="flex items-center gap-3 text-xs font-mono">
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      className="text-foreground hover:underline underline-offset-4 flex items-center gap-1 font-medium"
+                    >
+                      Live <ExternalLink size={12} />
+                    </Link>
+                    <span className="text-muted-foreground">·</span>
+                    <Link
+                      href={project.code}
+                      target="_blank"
+                      className="text-muted-foreground hover:text-foreground hover:underline underline-offset-4 flex items-center gap-1"
+                    >
+                      Code <Github size={12} />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
 }
-
-export default Projects;
 

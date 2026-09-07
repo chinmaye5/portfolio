@@ -70,8 +70,8 @@ export function CustomDock() {
 
   return (
     <TooltipProvider>
-      <div className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2">
-        <Dock className="rounded-full border bg-background/50 p-2 backdrop-blur-md">
+      <div className="fixed bottom-4 sm:bottom-8 left-1/2 z-50 -translate-x-1/2 max-w-[95vw]">
+        <Dock className="rounded-full border border-border bg-card/80 p-1.5 sm:p-2 backdrop-blur-lg shadow-lg">
           {/* Social Icons */}
           {socialLinks.map((social) => (
             <DockIcon key={social.name}>
@@ -86,10 +86,10 @@ export function CustomDock() {
                         variant: "ghost",
                         size: "icon",
                       }),
-                      "size-12 rounded-full"
+                      "size-9 sm:size-11 rounded-full p-0 flex items-center justify-center"
                     )}
                   >
-                    <social.icon className="size-5" />
+                    <social.icon className="size-4 sm:size-5" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent side="top">
@@ -106,15 +106,15 @@ export function CustomDock() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="size-12 rounded-full"
+                  className="size-9 sm:size-11 rounded-full p-0 flex items-center justify-center"
                   onClick={() =>
                     setTheme(resolvedTheme === "light" ? "dark" : "light")
                   }
                 >
                   {resolvedTheme === "light" ? (
-                    <Moon className="size-5" />
+                    <Moon className="size-4 sm:size-5" />
                   ) : (
-                    <Sun className="size-5" />
+                    <Sun className="size-4 sm:size-5" />
                   )}
                   <span className="sr-only">Toggle theme</span>
                 </Button>
@@ -129,3 +129,4 @@ export function CustomDock() {
     </TooltipProvider>
   );
 }
+
