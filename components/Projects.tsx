@@ -24,6 +24,28 @@ interface SecondaryProject {
 
 const flagshipProjects: FlagshipProject[] = [
   {
+    title: "Converso",
+    tagline: "Multi-tenant AI customer support SaaS platform with RAG architecture.",
+    architecture:
+      "Built with Next.js 16, TypeScript, Express 5, and PostgreSQL (pgvector) via Drizzle ORM. Utilizes LangGraph, Groq, and Jina AI embeddings for end-to-end RAG pipelines and automated human-handoff workflows.",
+    decision:
+      "Standard customer support tools lack contextual source-cited intelligence. Architecting a multi-tenant RAG system with optimized 32-chunk batch processing cuts embedding API calls by 97% while ensuring secure, isolated customer data handling.",
+    link: "https://theconverso.vercel.app/",
+    code: "https://github.com/chinmaye5/converso",
+    tech: ["Next.js 16", "TypeScript", "Express 5", "PostgreSQL (pgvector)", "Drizzle ORM", "LangGraph", "Groq", "Jina AI", "Docker"],
+  },
+  {
+    title: "RAGent",
+    tagline: "Agentic RAG platform featuring multi-agent workflows and automated self-correction.",
+    architecture:
+      "Powered by FastAPI, LangGraph, React 19, and PostgreSQL (pgvector). Implements a 5-stage ingestion pipeline with LLM-driven contextual metadata enrichment and dynamic retrieval verification loops.",
+    decision:
+      "Unverified RAG responses frequently suffer from silent hallucinations and high latency. Introducing an automated verification node and an intent router short-circuits unnecessary vector searches, reducing hallucination rates by 85% and cutting token consumption by 60%.",
+    link: "https://theragent.vercel.app/",
+    code: "https://github.com/chinmaye5/ragent",
+    tech: ["FastAPI", "LangGraph", "PostgreSQL (pgvector)", "Groq API", "Jina AI", "React 19", "Docker"],
+  },
+  {
     title: "ParallelAI",
     tagline: "Multi-LLM parallel querying platform for response cross-validation.",
     architecture:
