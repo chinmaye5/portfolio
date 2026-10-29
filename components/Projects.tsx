@@ -35,6 +35,17 @@ const flagshipProjects: FlagshipProject[] = [
     tech: ["Next.js 16", "TypeScript", "Express 5", "PostgreSQL (pgvector)", "Drizzle ORM", "LangGraph", "Groq", "Jina AI", "Docker"],
   },
   {
+    title: "HireUp",
+    tagline: "SaaS platform for AI voice interviews, from invite to scorecard",
+    architecture:
+      "Built with Next.js 16, TypeScript, FastAPI, and MongoDB, with Clerk for auth and LiveKit Cloud for real-time WebRTC audio. A live voice agent runs a Groq Whisper, Groq LLM, and Deepgram TTS pipeline, saves the transcript to MongoDB turn by turn, and auto-scores each candidate with schema-validated LLM output.",
+    decision:
+      "Real-time voice is too heavy for a 512 MB free-tier host, so I split the system into a lightweight FastAPI API and a separate voice agent on LiveKit Cloud, with all speech and LLM work offloaded to Groq and Deepgram. Atomic MongoDB status transitions stop an invite being started twice, per-company data isolation keeps recruiters from seeing each other's candidates, and a release-on-failure path means an infrastructure error never uses up a candidate's one interview.",
+    link: "https://thehireup.vercel.app/",
+    code: "https://github.com/chinmaye5/hireup",
+    tech: ["Next.js 16", "TypeScript", "FastAPI", "MongoDB", "Clerk", "LiveKit Agents", "Groq", "Deepgram", "Silero VAD", "Docker", "GitHub Actions"],
+  },
+  {
     title: "RAGent",
     tagline: "Agentic RAG platform featuring multi-agent workflows and automated self-correction.",
     architecture:
